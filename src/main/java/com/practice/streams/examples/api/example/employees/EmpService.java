@@ -10,8 +10,15 @@ public class EmpService {
 		return EmpDaoStub.getAllEmp().stream().filter(emp -> emp.getSalary() > 600000).collect(Collectors.toList());
 	}
 
+	public static List<Employee> getNonTaxableEmployees() {
+
+		return EmpDaoStub.getAllEmp().stream().filter(emp -> emp.getSalary() <= 600000).collect(Collectors.toList());
+	}
+
 	public static void main(String[] args) {
-		System.out.println(getTaxableEmployees());
+		System.out.println("Taxble Employees : " + getTaxableEmployees());
+		System.err.println("-------");
+		System.out.println("Non Taxble Employees : " + getNonTaxableEmployees());
 	}
 
 }
